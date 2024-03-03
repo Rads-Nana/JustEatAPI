@@ -45,16 +45,15 @@ app.get("/restaurants/:postcode", (req, res) =>{
                         //slice data to retrieve only the first ten
                         const topTenRestaurants = restaurantDetails.slice(0, 10);
 
-                        console.log(topTenRestaurants);
 
                         //extract required data as objects for each (name, cuisine, postcode, rating)
                         const extractedData = topTenRestaurants.map(restaurant => {
-                            ({
+                            return {
                                 name: restaurant.name,
-                                cuisines: restaurant.cuisines,
+                                cuisines: restaurant.cuisines.map(cuisine => cuisine.name),
                                 address: restaurant.address.postalCode,
-                                rating: restaurant.rating.startRating,
-                            });
+                                rating: restaurant.rating.starRating,
+                            };
                         });
 
                         //display extracted data
@@ -88,4 +87,5 @@ app.get("/restaurants/:postcode", (req, res) =>{
                 console.error(`Error making HTTPS request: ${error.message}`);
                 res.status(500).json({ error: "Error making HTTPS request" });
         });
+    });
 });
