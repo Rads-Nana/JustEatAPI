@@ -58,17 +58,34 @@ app.get("/restaurants/:postcode", (req, res) =>{
                         });
 
                         //display extracted data
-
+                        const displayExtractedData = ((extractedData) => {
+                            extractedData.forEach(restaurant => {
+                                console.log(`${restaurant.name}:`);
+                                console.log(`    Cuisines: ${restaurant.cuisines.join(", ")}`);
+                                console.log(`    Address: ${restaurant.address}`);
+                                console.log(`    Rating: ${restaurant.rating}`);
+                                console.log(""); 
+                            });    
+                        });
 
                         //call function to display data
-
+                        displayExtractedData(extractedData);
 
                         //response
-
-
+                        res.status(200).json(extractedData);
+                        
                     }   //else statement if restaurant data not found throw error
+                        else {
+                            throw new Error("Restaurant data was not found");
+                        }
+                } catch (error) {
+                    console.error("Error parsing or extracting the restaurant data", error.message);
+                    res.status(500).json({ error: "Internal Service Error"});
                 }
             });
             //request error to check if failed HTTPS
+            request.on('error', (error) => {
+                console.error(`Error making HTTPS request: ${error.message}`);
+                res.status(500).json({ error: "Error making HTTPS request" });
         });
 });
