@@ -21,7 +21,7 @@ Express
 
 
 **Steps for Installation**
-1) git clone https://github.com/rad-1994/JustEatAPI.git
+1) git clone https://github.com/Rads-Nana/JustEatAPI.git
 2) Install dependencies "npm install"
 
 
@@ -36,10 +36,10 @@ Express
 
 ● During this project, there were several assumptions made:
 - The rating used was assumed to be the star rating
-- The address provided on the displayed data was assumed to be just the postcode, opposed to the full address
+- The address provided on the displayed data was assumed to be just the postcode, as opposed to the full address
 - This application is based on UK restaurants only 
 
 **Include any improvements you’d make to your solution:**
 - I would improve the presentation of the data which is displayed in the terminal
-- I would provide more accurate and clear error handling messages
-- I would add additional error messages to account for invalid postcodes, prompting the user to double-check the postcode has been entered correctly
+- I would provide more accurate and clear error-handling messages
+- I would add additional error messages to account for invalid postcodes, prompting the user to double-check that the postcode has been entered correctly
